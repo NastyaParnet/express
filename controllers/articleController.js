@@ -16,14 +16,14 @@ exports.checkId = () => {
 };
 
 exports.checkArticle = (req, res, next) => {
-  if (req.body.title) {
-    next();
-  } else {
+  if (!req.body.title) {
     res.status(400).json({
       status: 'fail',
       message: 'Title is required',
     });
+    return;
   }
+  next();
 };
 
 exports.getAllArticles = (req, res) => {
@@ -42,7 +42,7 @@ exports.getAllArticles = (req, res) => {
   });
 };
 
-exports.getArticle = () => {
+exports.getArticle = (req, res) => {
   // response status should be 200
   // article with requested id should be provided
   // result should be json
