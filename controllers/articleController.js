@@ -15,15 +15,15 @@ exports.checkId = () => {
   // }
 };
 
-exports.checkArticle = () => {
-  // this middleware should check if article in request body is correct
-  // if it is - the next middleware should be called
-  // if it is not - response status should be set to 400
-  // and result should be json:
-  // {
-  //   status: 'fail'
-  //   message: 'Title is required',
-  // }
+exports.checkArticle = (req, res, next) => {
+  if (req.body.title) {
+    next();
+  } else {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Title is required',
+    });
+  }
 };
 
 exports.getAllArticles = (req, res) => {
@@ -40,18 +40,6 @@ exports.getAllArticles = (req, res) => {
       articles: allArticles,
     },
   });
-  // response status should be 200
-  // all articles should be provided
-  // if title is present in query params,
-  // only those articles that contain it (case insensitive), should be provided
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: {
-  //     count: articles count,
-  //     articles: all articles,
-  //   },
-  // }
 };
 
 exports.getArticle = () => {
@@ -66,15 +54,24 @@ exports.getArticle = () => {
   // }
 };
 
-exports.postArticle = () => {
-  // new article should be added
-  // id should be evaluated as id of last articlee + 1
-  // response status should be 201
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: { article: newarticle }
-  // }
+exports.postArticle = (req, res) => {
+  const copyArticles = [...articles];
+  const newArticle = {
+    id: copyArticles[copyArticles.length - 1].id + 1,
+    title: '',
+    description: '',
+    comments: '',
+    ...req.body,
+  };
+  copyArticles.push(newArticle);
+  writeArticles(copyArticles, () => {
+    res.status(201).json({
+      status: 'success',
+      data: {
+        article: newArticle,
+      },
+    });
+  });
 };
 
 exports.patchArticle = () => {

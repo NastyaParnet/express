@@ -188,7 +188,7 @@ describe('/api/v1/articles/', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('POST: articleController.postArticle is called and provides response if article is correct', async () => {
+  it('POST: articleController.postArticle is called and provides response if article is correct', async () => {
     const expected = { status: 'success' };
     const checkArticleSpy = jest
       .spyOn(articleController, 'checkArticle')
