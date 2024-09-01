@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  // checkId,
+  checkId,
   checkArticle,
   getAllArticles,
   postArticle,
@@ -11,7 +11,7 @@ const {
 
 const router = express.Router();
 
-// router.param('id', checkId);
+router.param('id', checkId);
 
 router.route('/').get(getAllArticles).post(checkArticle).post(postArticle);
 router.route('/:id').get(getArticle).put(patchArticle).delete(deleteArticle);

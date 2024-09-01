@@ -102,7 +102,7 @@ describe('articleController', () => {
       });
   });
 
-  it.skip('getArticle sets response status 200 and sets correct json result', () => {
+  it('getArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 
@@ -159,7 +159,7 @@ describe('articleController', () => {
       });
   });
 
-  it.skip(`checkId sets response status 404 and sets correct json result 
+  it(`checkId sets response status 404 and sets correct json result 
   if entity with specified id is not found`, () => {
     const req = mockRequest();
     const res = mockResponse();
@@ -174,7 +174,7 @@ describe('articleController', () => {
     });
   });
 
-  it.skip(`checkId calls the next middleware if entity with specified id is found`, () => {
+  it(`checkId calls the next middleware if entity with specified id is found`, () => {
     const req = mockRequest();
     const res = mockResponse();
     const next = jest.fn();

@@ -11,7 +11,7 @@ describe('/api/v1/articles/:id', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it.skip('GET: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it('GET: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -32,7 +32,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('GET: articleController.getArticle is called when id is correct', async () => {
+  it('GET: articleController.getArticle is called when id is correct', async () => {
     const expected = {
       id: 0,
       title: 'The Forest Hiker',

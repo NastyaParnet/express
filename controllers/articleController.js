@@ -4,15 +4,18 @@ const { readArticlesSync, writeArticles } = require('../dev-data/utils');
 // Copy it to the functions below where articles are needed and remove from here
 const articles = readArticlesSync();
 
-exports.checkId = () => {
-  // this middleware should check if article with specified commentId exists
-  // if it does - the next middleware should be called
-  // if it does not - response status should be set to 404
-  // and result should be json:
-  // {
-  //   status: 'fail',
-  //   message: 'Invalid article id',
-  // }
+exports.checkId = (req, res, next) => {
+  const id = Number(req.params.id);
+  const index = articles.findIndex((article) => article.id === id);
+  if (index < 0) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid article id',
+    });
+    return;
+  }
+  res.locals.index = index;
+  next();
 };
 
 exports.checkArticle = (req, res, next) => {
@@ -43,15 +46,12 @@ exports.getAllArticles = (req, res) => {
 };
 
 exports.getArticle = (req, res) => {
-  // response status should be 200
-  // article with requested id should be provided
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: {
-  //     article: found article,
-  //   },
-  // }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      article: articles[res.locals.index],
+    },
+  });
 };
 
 exports.postArticle = (req, res) => {
