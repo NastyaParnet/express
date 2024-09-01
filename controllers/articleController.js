@@ -1,10 +1,7 @@
 const { readArticlesSync, writeArticles } = require('../dev-data/utils');
 
-// Use readArticlesSync function to get articles
-// Copy it to the functions below where articles are needed and remove from here
-const articles = readArticlesSync();
-
 exports.checkId = (req, res, next) => {
+  const articles = readArticlesSync();
   const id = Number(req.params.id);
   const index = articles.findIndex((article) => article.id === id);
   if (index < 0) {
@@ -30,6 +27,7 @@ exports.checkArticle = (req, res, next) => {
 };
 
 exports.getAllArticles = (req, res) => {
+  const articles = readArticlesSync();
   const { title } = req.query;
   const allArticles = title
     ? articles.filter((article) =>
@@ -46,6 +44,7 @@ exports.getAllArticles = (req, res) => {
 };
 
 exports.getArticle = (req, res) => {
+  const articles = readArticlesSync();
   res.status(200).json({
     status: 'success',
     data: {
@@ -55,6 +54,7 @@ exports.getArticle = (req, res) => {
 };
 
 exports.postArticle = (req, res) => {
+  const articles = readArticlesSync();
   const copyArticles = [...articles];
   const newArticle = {
     id: copyArticles[copyArticles.length - 1].id + 1,
