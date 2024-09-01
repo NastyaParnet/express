@@ -1,11 +1,24 @@
 const express = require('express');
+const {
+  // checkId: checkCommentId,
+  // checkArticleComment,
+  getAllArticleComments,
+  getArticleComment,
+  postArticleComment,
+  deleteArticleComment,
+} = require('../controllers/articleCommentController');
+// const { checkId } = require('../controllers/articleController');
 
-//define routes for article comments here (for get, post and delete requests)
-//use exspress Router
-//articleController.checkId should be called before every route
-//articleCommentController.checkId should be called before getArticleComment and deleteArticleComment
-//articleCommentController.checkArticleComment should be called before postArticleComment
+const router = express.Router();
 
-const router = /*your assignment*/;
-  
+// router.param('id', checkId);
+// router.param('commentId', checkCommentId);
+
+router
+  .route('/')
+  .get(getAllArticleComments)
+  // .post(checkArticleComment)
+  .post(postArticleComment);
+router.route('/:commentId').get(getArticleComment).delete(deleteArticleComment);
+
 module.exports = router;

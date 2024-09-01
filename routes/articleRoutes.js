@@ -1,10 +1,23 @@
 const express = require('express');
+const {
+  // checkId,
+  // checkArticle,
+  getAllArticles,
+  postArticle,
+  getArticle,
+  patchArticle,
+  deleteArticle,
+} = require('../controllers/articleController');
 
-//define routes for articles here (for get, post, patch and delete requests)
-//use exspress Router
-//articleController.checkArticle should be called before articleController.postArticle
-//articleController.checkId should be called first for routes with id parameter
+const router = express.Router();
 
-const router = /*your assignment here*/;
+// router.param('id', checkId);
+
+router
+  .route('/')
+  .get(getAllArticles)
+  // .post(checkArticle)
+  .post(postArticle);
+router.route('/:id').get(getArticle).put(patchArticle).delete(deleteArticle);
 
 module.exports = router;
