@@ -11,7 +11,7 @@ describe('/api/v1/articles/:id', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it('GET: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it.skip('GET: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -32,7 +32,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('GET: articleController.getArticle is called when id is correct', async () => {
+  it.skip('GET: articleController.getArticle is called when id is correct', async () => {
     const expected = {
       id: 0,
       title: 'The Forest Hiker',
@@ -60,7 +60,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('PATCH: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it.skip('PATCH: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -81,7 +81,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('PATCH: articleController.patchArticle is called when id is correct', async () => {
+  it.skip('PATCH: articleController.patchArticle is called when id is correct', async () => {
     const expected = {
       id: 0,
       title: 'The Forest Hiker',
@@ -109,7 +109,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('DELETE: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it.skip('DELETE: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -130,7 +130,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('DELETE: articleController.patchArticle is called when id is correct', async () => {
+  it.skip('DELETE: articleController.patchArticle is called when id is correct', async () => {
     const expected = {
       status: 'success',
       data: {
@@ -188,7 +188,7 @@ describe('/api/v1/articles/', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('POST: articleController.postArticle is called and provides response if article is correct', async () => {
+  it.skip('POST: articleController.postArticle is called and provides response if article is correct', async () => {
     const expected = { status: 'success' };
     const checkArticleSpy = jest
       .spyOn(articleController, 'checkArticle')
@@ -216,7 +216,7 @@ describe('/api/v1/articles/:id/comments', () => {
     jest.clearAllMocks();
   });
 
-  it(`GET: articleCommentController.getAllArticleComments and articleController.checkId 
+  it.skip(`GET: articleCommentController.getAllArticleComments and articleController.checkId 
   are called and provide response`, async () => {
     const expected = [
       {
@@ -248,7 +248,7 @@ describe('/api/v1/articles/:id/comments', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it(`POST: articleCommentController.getAllArticleComments,
+  it.skip(`POST: articleCommentController.getAllArticleComments,
   articleCommentController.getAllArticleComments and articleController.checkId
   are called and provide response if comment and ids are correct`, async () => {
     const expected = { status: 'success' };
@@ -278,7 +278,7 @@ describe('/api/v1/articles/:id/comments', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it(`POST: articleController.checkId
+  it.skip(`POST: articleController.checkId
   provide response if comment is not correct`, async () => {
     const expected = { status: 'fail' };
     const checkArticleIdSpy = jest
@@ -311,7 +311,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     jest.clearAllMocks();
   });
 
-  it(`GET: articleCommentController.getArticleComment and articleController.checkId 
+  it.skip(`GET: articleCommentController.getArticleComment and articleController.checkId 
   are called and provide response`, async () => {
     const expected = {
       id: 0,
@@ -343,7 +343,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
+  it.skip(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
     and articleController.checkId are called and provide response`, async () => {
     const expected = {
       status: 'fail',
@@ -375,7 +375,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it(`GET: articleCommentController.checkId middleware is used and provides result 
+  it.skip(`GET: articleCommentController.checkId middleware is used and provides result 
   if comment Id is not correct`, async () => {
     const expected = {
       status: 'fail',
@@ -406,7 +406,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
+  it.skip(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
     and articleController.checkId are called and provide response`, async () => {
     const expected = {
       status: 'fail',

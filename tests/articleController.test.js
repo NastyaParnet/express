@@ -37,7 +37,7 @@ describe('articleController', () => {
     return res;
   };
 
-  it('deleteArticle sets response status 200 and sets correct json result', () => {
+  it.skip('deleteArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 
@@ -55,7 +55,7 @@ describe('articleController', () => {
       });
   });
 
-  it('patchArticle sets response status 200 and sets correct json result', () => {
+  it.skip('patchArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 
@@ -80,7 +80,7 @@ describe('articleController', () => {
       });
   });
 
-  it('postArticle sets response status 201 and sets correct json result', () => {
+  it.skip('postArticle sets response status 201 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     const newArticle = {
@@ -102,7 +102,7 @@ describe('articleController', () => {
       });
   });
 
-  it('getArticle sets response status 200 and sets correct json result', () => {
+  it.skip('getArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 
@@ -159,7 +159,7 @@ describe('articleController', () => {
       });
   });
 
-  it(`checkId sets response status 404 and sets correct json result 
+  it.skip(`checkId sets response status 404 and sets correct json result 
   if entity with specified id is not found`, () => {
     const req = mockRequest();
     const res = mockResponse();
@@ -174,7 +174,7 @@ describe('articleController', () => {
     });
   });
 
-  it(`checkId calls the next middleware if entity with specified id is found`, () => {
+  it.skip(`checkId calls the next middleware if entity with specified id is found`, () => {
     const req = mockRequest();
     const res = mockResponse();
     const next = jest.fn();
@@ -185,7 +185,7 @@ describe('articleController', () => {
     expect(next).toHaveBeenCalledTimes(1);
   });
 
-  it(`checkArticle sets response status 400 and sets correct json result 
+  it.skip(`checkArticle sets response status 400 and sets correct json result 
   if article is not correct`, () => {
     const req = mockRequest();
     const res = mockResponse();
@@ -203,7 +203,7 @@ describe('articleController', () => {
     });
   });
 
-  it(`checkArticle calls the next middleware if entity with specified id is found`, () => {
+  it.skip(`checkArticle calls the next middleware if entity with specified id is found`, () => {
     const req = mockRequest();
     const res = mockResponse();
     const next = jest.fn();

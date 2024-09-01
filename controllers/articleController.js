@@ -26,7 +26,20 @@ exports.checkArticle = () => {
   // }
 };
 
-exports.getAllArticles = () => {
+exports.getAllArticles = (req, res) => {
+  const { title } = req.query;
+  const allArticles = title
+    ? articles.filter((article) =>
+        article.title.toLowerCase().includes(title.toLowerCase())
+      )
+    : articles;
+  res.status(200).json({
+    status: 'success',
+    data: {
+      count: allArticles.length,
+      articles: allArticles,
+    },
+  });
   // response status should be 200
   // all articles should be provided
   // if title is present in query params,

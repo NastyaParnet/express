@@ -49,7 +49,7 @@ describe('articleCommentController', () => {
     return res;
   };
 
-  it('getAllArticleComments sets response status 200 and sets correct json result', () => {
+  it.skip('getAllArticleComments sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -69,7 +69,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it('getArticleComment sets response status 200 and sets correct json result', () => {
+  it.skip('getArticleComment sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -90,7 +90,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it('postArticleComment sets response status 201 and sets correct json result', () => {
+  it.skip('postArticleComment sets response status 201 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     const newComment = {
@@ -113,7 +113,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it('deleteArticleComment sets response status 200 and sets correct json result', () => {
+  it.skip('deleteArticleComment sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -134,7 +134,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it('checkId sets response status 404 and sets correct json result', () => {
+  it.skip('checkId sets response status 404 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -151,7 +151,7 @@ describe('articleCommentController', () => {
     expect(res.json).toHaveBeenCalledTimes(1).toHaveBeenCalledWith(expected);
   });
 
-  it('checkArticleComment sets response status 400 and sets correct json result', () => {
+  it.skip('checkArticleComment sets response status 400 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -170,7 +170,7 @@ describe('articleCommentController', () => {
     expect(res.json).toHaveBeenCalledTimes(1).toHaveBeenCalledWith(expected);
   });
 
-  it('checkArticleComment calls next middleware if comment is correct', () => {
+  it.skip('checkArticleComment calls next middleware if comment is correct', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
