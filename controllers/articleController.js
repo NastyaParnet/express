@@ -60,7 +60,6 @@ exports.postArticle = (req, res) => {
     id: copyArticles[copyArticles.length - 1].id + 1,
     title: '',
     description: '',
-    comments: '',
     ...req.body,
   };
   copyArticles.push(newArticle);

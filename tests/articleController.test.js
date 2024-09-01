@@ -80,7 +80,7 @@ describe('articleController', () => {
       });
   });
 
-  it.skip('postArticle sets response status 201 and sets correct json result', () => {
+  it('postArticle sets response status 201 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     const newArticle = {
