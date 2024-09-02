@@ -69,7 +69,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it.skip('getArticleComment sets response status 200 and sets correct json result', () => {
+  it('getArticleComment sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -134,7 +134,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it.skip('checkId sets response status 404 and sets correct json result', () => {
+  it('checkId sets response status 404 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};

@@ -311,7 +311,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     jest.clearAllMocks();
   });
 
-  it.skip(`GET: articleCommentController.getArticleComment and articleController.checkId 
+  it(`GET: articleCommentController.getArticleComment and articleController.checkId 
   are called and provide response`, async () => {
     const expected = {
       id: 0,
@@ -375,7 +375,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip(`GET: articleCommentController.checkId middleware is used and provides result 
+  it(`GET: articleCommentController.checkId middleware is used and provides result 
   if comment Id is not correct`, async () => {
     const expected = {
       status: 'fail',

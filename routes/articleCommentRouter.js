@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  // checkId: checkCommentId,
+  checkId: checkCommentId,
   checkArticleComment,
   getAllArticleComments,
   getArticleComment,
@@ -12,7 +12,7 @@ const { checkId } = require('../controllers/articleController');
 const router = express.Router();
 
 router.param('id', checkId);
-// router.param('commentId', checkCommentId);
+router.param('commentId', checkCommentId);
 
 router
   .route('/:id/comments')

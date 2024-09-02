@@ -1,14 +1,19 @@
 const { readArticlesSync, writeArticles } = require('../dev-data/utils');
 
-exports.checkId = () => {
-  // this middleware should check if comment with specified commentId exists
-  // if it does - the next middleware should be called
-  // if it does not - response status should be set to 404
-  // and result should be json:
-  // {
-  //   status: 'fail'
-  //   message: 'Invalid comment id',
-  // }
+exports.checkId = (req, res, next) => {
+  const articles = readArticlesSync();
+  const { comments } = articles[res.locals.index];
+  const id = Number(req.params.commentId);
+  const commentIndex = comments.findIndex((article) => article.id === id);
+  if (commentIndex < 0) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid comment id',
+    });
+    return;
+  }
+  res.locals.commentIndex = commentIndex;
+  next();
 };
 
 exports.checkArticleComment = (req, res, next) => {
@@ -34,16 +39,15 @@ exports.getAllArticleComments = (req, res) => {
   });
 };
 
-exports.getArticleComment = () => {
-  // response status should be 200
-  // comment of article should be provided
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: {
-  //     comment: requested comment,
-  //   },
-  // }
+exports.getArticleComment = (req, res) => {
+  const articles = readArticlesSync();
+  const { comments } = articles[res.locals.index];
+  res.status(200).json({
+    status: 'success',
+    data: {
+      comment: comments[res.locals.commentIndex],
+    },
+  });
 };
 
 exports.postArticleComment = (req, res) => {
