@@ -113,7 +113,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it.skip('deleteArticleComment sets response status 200 and sets correct json result', () => {
+  it('deleteArticleComment sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};

@@ -72,12 +72,18 @@ exports.postArticleComment = (req, res) => {
   });
 };
 
-exports.deleteArticleComment = () => {
-  // comment with specified commentId should be deleted from the article comments
-  // response status should be 200
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: { comment: null }
-  // }
+exports.deleteArticleComment = (req, res) => {
+  const articles = readArticlesSync();
+  const { comments } = articles[res.locals.index];
+  comments.splice(res.locals.commentIndex, 1);
+  articles.splice(res.locals.index, 0, {
+    ...articles[res.locals.index],
+    comments,
+  });
+  writeArticles(articles, () => {
+    res.status(200).json({
+      status: 'success',
+      data: { comment: null },
+    });
+  });
 };

@@ -343,7 +343,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
+  it(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
     and articleController.checkId are called and provide response`, async () => {
     const expected = {
       status: 'fail',
@@ -406,7 +406,7 @@ describe('/api/v1/articles/:id/comments/:commentId', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
+  it(`DELETE: articleCommentController.deleteArticleComment, articleCommentController.deleteArticleCommentId
     and articleController.checkId are called and provide response`, async () => {
     const expected = {
       status: 'fail',
