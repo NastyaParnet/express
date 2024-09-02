@@ -37,7 +37,7 @@ describe('articleController', () => {
     return res;
   };
 
-  it.skip('deleteArticle sets response status 200 and sets correct json result', () => {
+  it('deleteArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 

@@ -109,7 +109,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('DELETE: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it('DELETE: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -130,7 +130,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('DELETE: articleController.patchArticle is called when id is correct', async () => {
+  it('DELETE: articleController.patchArticle is called when id is correct', async () => {
     const expected = {
       status: 'success',
       data: {

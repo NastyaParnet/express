@@ -87,12 +87,13 @@ exports.patchArticle = (req, res) => {
   });
 };
 
-exports.deleteArticle = () => {
-  // article with specified id should be deleted
-  // response status should be 200
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: { article: null }
-  // }
+exports.deleteArticle = (req, res) => {
+  const articles = readArticlesSync();
+  articles.splice(res.locals.index, 1);
+  writeArticles(articles, () => {
+    res.status(200).json({
+      status: 'success',
+      data: { article: null },
+    });
+  });
 };
