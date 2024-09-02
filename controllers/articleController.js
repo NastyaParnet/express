@@ -55,15 +55,14 @@ exports.getArticle = (req, res) => {
 
 exports.postArticle = (req, res) => {
   const articles = readArticlesSync();
-  const copyArticles = [...articles];
   const newArticle = {
-    id: copyArticles[copyArticles.length - 1].id + 1,
+    id: articles[articles.length - 1].id + 1,
     title: '',
     description: '',
     ...req.body,
   };
-  copyArticles.push(newArticle);
-  writeArticles(copyArticles, () => {
+  articles.push(newArticle);
+  writeArticles(articles, () => {
     res.status(201).json({
       status: 'success',
       data: {
