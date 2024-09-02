@@ -14,6 +14,6 @@ const router = express.Router();
 router.param('id', checkId);
 
 router.route('/').get(getAllArticles).post(checkArticle).post(postArticle);
-router.route('/:id').get(getArticle).put(patchArticle).delete(deleteArticle);
+router.route('/:id').get(getArticle).patch(patchArticle).delete(deleteArticle);
 
 module.exports = router;

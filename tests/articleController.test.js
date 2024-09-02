@@ -55,7 +55,7 @@ describe('articleController', () => {
       });
   });
 
-  it.skip('patchArticle sets response status 200 and sets correct json result', () => {
+  it('patchArticle sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
 

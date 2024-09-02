@@ -72,15 +72,19 @@ exports.postArticle = (req, res) => {
   });
 };
 
-exports.patchArticle = () => {
-  // article with specified id should be updated
-  // (only properties provided in body should be overwritten in existing article)
-  // response status should be 200
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: { article: updated article }
-  // }
+exports.patchArticle = (req, res) => {
+  const articles = readArticlesSync();
+  const updatedArticle = {
+    ...articles[res.locals.index],
+    ...req.body,
+  };
+  articles.splice(res.locals.index, 0, updatedArticle);
+  writeArticles(articles, () => {
+    res.status(200).json({
+      status: 'success',
+      data: { article: updatedArticle },
+    });
+  });
 };
 
 exports.deleteArticle = () => {

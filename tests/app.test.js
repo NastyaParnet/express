@@ -60,7 +60,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('PATCH: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
+  it('PATCH: articleController.checkId middleware is used and provides result if Id is not correct', async () => {
     const expected = {
       status: 'fail',
       message: 'Invalid article id',
@@ -81,7 +81,7 @@ describe('/api/v1/articles/:id', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip('PATCH: articleController.patchArticle is called when id is correct', async () => {
+  it('PATCH: articleController.patchArticle is called when id is correct', async () => {
     const expected = {
       id: 0,
       title: 'The Forest Hiker',
