@@ -1,9 +1,5 @@
 const { readArticlesSync, writeArticles } = require('../dev-data/utils');
 
-// Use readArticlesSync function to get articles
-// Copy it to the functions below where articles are needed and remove from here
-const articles = readArticlesSync();
-
 exports.checkId = () => {
   // this middleware should check if comment with specified commentId exists
   // if it does - the next middleware should be called
@@ -26,17 +22,16 @@ exports.checkArticleComment = () => {
   // }
 };
 
-exports.getAllArticleComments = () => {
-  // response status should be 200
-  // all comments of article with specified id should be provided
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: {
-  //     count: comments count,
-  //     comments: comments,
-  //   },
-  // }
+exports.getAllArticleComments = (req, res) => {
+  const articles = readArticlesSync();
+  const { comments } = articles[res.locals.index];
+  res.status(200).json({
+    status: 'success',
+    data: {
+      count: comments.length,
+      comments: comments,
+    },
+  });
 };
 
 exports.getArticleComment = () => {

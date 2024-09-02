@@ -7,8 +7,6 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/v1/articles', articleRouter);
-app.use('/api/v1/articles/:id/comments', articleCommentRouter);
-
-// app should use articleCommentRouter and articleRouter routers
+app.use('/api/v1/articles', articleCommentRouter);
 
 module.exports = app;

@@ -49,7 +49,7 @@ describe('articleCommentController', () => {
     return res;
   };
 
-  it.skip('getAllArticleComments sets response status 200 and sets correct json result', () => {
+  it('getAllArticleComments sets response status 200 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};

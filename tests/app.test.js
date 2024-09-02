@@ -216,7 +216,7 @@ describe('/api/v1/articles/:id/comments', () => {
     jest.clearAllMocks();
   });
 
-  it.skip(`GET: articleCommentController.getAllArticleComments and articleController.checkId 
+  it(`GET: articleCommentController.getAllArticleComments and articleController.checkId 
   are called and provide response`, async () => {
     const expected = [
       {
