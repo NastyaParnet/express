@@ -248,7 +248,7 @@ describe('/api/v1/articles/:id/comments', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip(`POST: articleCommentController.getAllArticleComments,
+  it(`POST: articleCommentController.getAllArticleComments,
   articleCommentController.getAllArticleComments and articleController.checkId
   are called and provide response if comment and ids are correct`, async () => {
     const expected = { status: 'success' };
@@ -278,7 +278,7 @@ describe('/api/v1/articles/:id/comments', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it.skip(`POST: articleController.checkId
+  it(`POST: articleController.checkId
   provide response if comment is not correct`, async () => {
     const expected = { status: 'fail' };
     const checkArticleIdSpy = jest

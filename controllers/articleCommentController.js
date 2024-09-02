@@ -11,15 +11,15 @@ exports.checkId = () => {
   // }
 };
 
-exports.checkArticleComment = () => {
-  // this middleware should check if comment in request body is correct
-  // if it is - the next middleware should be called
-  // if it is not - response status should be set to 400
-  // and result should be json:
-  // {
-  //   status: 'fail'
-  //   message: 'Content is required',
-  // }
+exports.checkArticleComment = (req, res, next) => {
+  if (!req.body.content) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Content is required',
+    });
+    return;
+  }
+  next();
 };
 
 exports.getAllArticleComments = (req, res) => {
@@ -46,15 +46,26 @@ exports.getArticleComment = () => {
   // }
 };
 
-exports.postArticleComment = () => {
-  // new comment should be added to the article
-  // id should be evaluated as id of last comment of this article + 1
-  // response status should be 201
-  // result should be json
-  // {
-  //   status: 'success',
-  //   data: { comment: newComment }
-  // }
+exports.postArticleComment = (req, res) => {
+  const articles = readArticlesSync();
+  const { comments } = articles[res.locals.index];
+  const newComment = {
+    id: (comments[comments.length - 1]?.id || 0) + 1,
+    ...req.body,
+  };
+  comments.push(newComment);
+  articles.splice(res.locals.index, 0, {
+    ...articles[res.locals.index],
+    comments,
+  });
+  writeArticles(articles, () => {
+    res.status(201).json({
+      status: 'success',
+      data: {
+        comment: newComment,
+      },
+    });
+  });
 };
 
 exports.deleteArticleComment = () => {

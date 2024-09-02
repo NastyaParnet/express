@@ -90,7 +90,7 @@ describe('articleCommentController', () => {
       });
   });
 
-  it.skip('postArticleComment sets response status 201 and sets correct json result', () => {
+  it('postArticleComment sets response status 201 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     const newComment = {
@@ -151,7 +151,7 @@ describe('articleCommentController', () => {
     expect(res.json).toHaveBeenCalledTimes(1).toHaveBeenCalledWith(expected);
   });
 
-  it.skip('checkArticleComment sets response status 400 and sets correct json result', () => {
+  it('checkArticleComment sets response status 400 and sets correct json result', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};
@@ -170,7 +170,7 @@ describe('articleCommentController', () => {
     expect(res.json).toHaveBeenCalledTimes(1).toHaveBeenCalledWith(expected);
   });
 
-  it.skip('checkArticleComment calls next middleware if comment is correct', () => {
+  it('checkArticleComment calls next middleware if comment is correct', () => {
     const req = mockRequest();
     const res = mockResponse();
     req.query = {};

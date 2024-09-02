@@ -1,7 +1,7 @@
 const express = require('express');
 const {
   // checkId: checkCommentId,
-  // checkArticleComment,
+  checkArticleComment,
   getAllArticleComments,
   getArticleComment,
   postArticleComment,
@@ -17,7 +17,7 @@ router.param('id', checkId);
 router
   .route('/:id/comments')
   .get(getAllArticleComments)
-  // .post(checkArticleComment)
+  .post(checkArticleComment)
   .post(postArticleComment);
 router
   .route('/:id/comments/:commentId')
